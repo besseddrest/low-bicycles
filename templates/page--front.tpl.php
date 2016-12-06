@@ -141,11 +141,11 @@
   </style>
 
   <?php if (theme_get_setting('slideshow_display','low_nexus')): ?>
-    <div class="container">
-      <div class="row">
-        <?php print $messages; ?>
-      </div>
+  <div class="container">
+    <div class="row">
+      <?php print $messages; ?>
     </div>
+  </div>
 
     <div class="slideshow-wrapper">
       <?php if ($slide1_url): ?>
@@ -184,6 +184,5 @@
         <div class="slide slide-6"></div>
       <?php endif; ?>
     </div>
-  <?php endif; ?>
   <?php endif; ?>
 </div>
