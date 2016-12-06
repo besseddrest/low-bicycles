@@ -64,47 +64,7 @@
  * @see template_process()
  */
 ?>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script>
-  $(document).ready(function() {
-    // make slide 1 clickable on load
-    $('.slide-1').css('z-index', 1);
 
-    var counter = 2;
-
-    var interval = setInterval(function(){
-
-      // remove the slide-on from current visible slide
-      $('.slide-on').removeClass('slide-on');
-
-      // add slide-on class to next slide
-      $('.slide-' + counter).addClass('slide-on');
-
-      bringToFront();
-
-      // reset counter to 1 if we are on the last slide
-      if (counter === 6) {
-        counter = 1;
-      } else {
-        counter++;
-      }
-
-    }, 5000);
-
-    // brings current slide to front, after the transition
-    function bringToFront() {
-      // move `old` slide to back
-      if (counter === 1) {
-        $('.slide-6').css('z-index', 0);
-      } else {
-        $('.slide-' + (counter-1)).css('z-index', 0);
-      }
-      
-      // bring `new` slide to front
-      $('.slide-' + counter).css('z-index', 1);
-    }
-  });
-</script>
 <div id="page">
   <header id="masthead" class="site-header container" role="banner">
     <div class="row">
@@ -117,7 +77,7 @@
         <div class="mobilenavi"></div>
         <nav id="navigation" role="navigation">
           <div id="main-menu">
-            <?php 
+            <?php
               if (module_exists('i18n_menu')) {
                 $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
               } else {
@@ -131,6 +91,28 @@
     </div>
   </header>
 
+  <?php
+    $slide1_image = check_plain(theme_get_setting('slide1_image','low_nexus'));
+    $slide2_image = check_plain(theme_get_setting('slide2_image','low_nexus'));
+    $slide3_image = check_plain(theme_get_setting('slide3_image','low_nexus'));
+    $slide4_image = check_plain(theme_get_setting('slide4_image','low_nexus'));
+    $slide5_image = check_plain(theme_get_setting('slide5_image','low_nexus'));
+    $slide6_image = check_plain(theme_get_setting('slide6_image','low_nexus'));
+
+    $slide1_url = check_plain(theme_get_setting('slide1_url','low_nexus'));
+    $slide2_url = check_plain(theme_get_setting('slide2_url','low_nexus'));
+    $slide3_url = check_plain(theme_get_setting('slide3_url','low_nexus'));
+    $slide4_url = check_plain(theme_get_setting('slide4_url','low_nexus'));
+    $slide5_url = check_plain(theme_get_setting('slide5_url','low_nexus'));
+    $slide6_url = check_plain(theme_get_setting('slide6_url','low_nexus'));
+
+    $slide1_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide1_image;
+    $slide2_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide2_image;
+    $slide3_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide3_image;
+    $slide4_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide4_image;
+    $slide5_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide5_image;
+    $slide6_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide6_image;
+  ?>
 
   <?php if (theme_get_setting('slideshow_display','low_nexus')): ?>
   <div class="container">
@@ -139,96 +121,6 @@
     </div>
   </div>
 
-  <?php 
-    $slide1_image = check_plain(theme_get_setting('slide1_image','low_nexus'));
-    $slide2_image = check_plain(theme_get_setting('slide2_image','low_nexus'));
-    $slide3_image = check_plain(theme_get_setting('slide3_image','low_nexus'));
-    $slide4_image = check_plain(theme_get_setting('slide4_image','low_nexus'));
-    $slide5_image = check_plain(theme_get_setting('slide5_image','low_nexus'));
-    $slide6_image = check_plain(theme_get_setting('slide6_image','low_nexus'));
-    
-    $slide1_url = check_plain(theme_get_setting('slide1_url','low_nexus'));
-    $slide2_url = check_plain(theme_get_setting('slide2_url','low_nexus'));
-    $slide3_url = check_plain(theme_get_setting('slide3_url','low_nexus'));
-    $slide4_url = check_plain(theme_get_setting('slide4_url','low_nexus'));
-    $slide5_url = check_plain(theme_get_setting('slide5_url','low_nexus'));
-    $slide6_url = check_plain(theme_get_setting('slide6_url','low_nexus'));
-
-    $slide1_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide1_image; 
-    $slide2_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide2_image;
-    $slide3_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide3_image;
-    $slide4_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide4_image;
-    $slide5_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide5_image;
-    $slide6_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide6_image;
- ?>
- <style>
-  html, body {
-    margin:0;
-    padding:0;
-    height: 100%;
-  }
-
-  #page {
-    height: 92%;
-  } 
-
-  .slideshow-wrapper {
-    position:relative;
-    width: 100%;
-    height: 100%;
-  }
-
-  .slide {
-    z-index: 0;
-    opacity: 0;
-    position: absolute;
-    display: block;
-    overflow: auto;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    -webkit-transition: opacity 1s; /* Safari */
-    transition: opacity 1s;
-  }
-
-  .slide-on {
-    opacity: 1;
-  }
-
-  .slide-1 {
-    background-image: url('<?php echo $slide1_src; ?>');
-  }
-
-  .slide-2 {
-    background-image: url(<?php echo $slide2_src; ?>);
-  }
-
-  .slide-3 {
-    background-image: url(<?php echo $slide3_src; ?>);
-  }
-
-  .slide-4 {
-    background-image: url(<?php echo $slide4_src; ?>);
-  }
-
-  .slide-5 {
-    background-image: url(<?php echo $slide5_src; ?>);
-  }
-
-  .slide-6 {
-    background-image: url(<?php echo $slide6_src; ?>);
-  }
-
-  .logo-handmade {
-    max-width: 394px;
-    z-index: 2;
-    position: fixed;
-    bottom: 1%;
-    right: 2%;
-  }
-</style>
     <div class="slideshow-wrapper">
       <?php if ($slide1_url): ?>
         <a href="/<?php echo $slide1_url; ?>" class="slide slide-on slide-1">&nbsp;</a>
