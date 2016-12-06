@@ -6,7 +6,6 @@
 <?php print $styles; ?>
 <?php print $scripts; ?>
 <?php if ($is_front): ?>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="/sites/all/themes/low_nexus/js/theater.js"></script>
   <link rel="stylesheet" type="text/css" href="/sites/all/themes/low_nexus/css/theater.css">
 <?php endif; ?>
