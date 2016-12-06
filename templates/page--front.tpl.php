@@ -114,6 +114,32 @@
     $slide6_src = 'http://lowbicycles.com/sites/default/files/home/' . $slide6_image;
   ?>
 
+  <style>
+    .slide-1 {
+      background-image: url(<?php echo $slide1_src; ?>);
+    }
+
+    .slide-2 {
+      background-image: url(<?php echo $slide2_src; ?>);
+    }
+
+    .slide-3 {
+      background-image: url(<?php echo $slide3_src; ?>);
+    }
+
+    .slide-4 {
+      background-image: url(<?php echo $slide4_src; ?>);
+    }
+
+    .slide-5 {
+      background-image: url(<?php echo $slide5_src; ?>);
+    }
+
+    .slide-6 {
+      background-image: url(<?php echo $slide6_src; ?>);
+    }
+  </style>
+
   <?php if (theme_get_setting('slideshow_display','low_nexus')): ?>
   <div class="container">
     <div class="row">

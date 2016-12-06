@@ -33,30 +33,6 @@ html, body {
   opacity: 1;
 }
 
-.slide-1 {
-  background-image: url('<?php echo $slide1_src; ?>');
-}
-
-.slide-2 {
-  background-image: url(<?php echo $slide2_src; ?>);
-}
-
-.slide-3 {
-  background-image: url(<?php echo $slide3_src; ?>);
-}
-
-.slide-4 {
-  background-image: url(<?php echo $slide4_src; ?>);
-}
-
-.slide-5 {
-  background-image: url(<?php echo $slide5_src; ?>);
-}
-
-.slide-6 {
-  background-image: url(<?php echo $slide6_src; ?>);
-}
-
 .logo-handmade {
   max-width: 394px;
   z-index: 2;
